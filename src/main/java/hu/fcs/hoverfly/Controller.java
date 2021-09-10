@@ -18,9 +18,14 @@ public class Controller {
     @Value("${api.port:3030}")
     private int apiPort;
 
+    private final WebClient webClient;
+
+    public Controller(WebClient webClient) {
+        this.webClient = webClient;
+    }
+
     @GetMapping("/")
     List<User> get() {
-        WebClient webClient = WebClient.create();
         return webClient
             .get()
             .uri(format("http://localhost:%d/v1/users", apiPort))

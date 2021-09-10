@@ -1,6 +1,10 @@
 package hu.fcs.hoverfly;
 
+import io.specto.hoverfly.junit5.HoverflyExtension;
+import io.specto.hoverfly.junit5.api.HoverflyCapture;
+import io.specto.hoverfly.junit5.api.HoverflyConfig;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -20,6 +24,12 @@ import static org.assertj.core.api.Assertions.assertThat;
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @Testcontainers
+@ExtendWith(HoverflyExtension.class)
+@HoverflyCapture(
+    config = @HoverflyConfig(
+        plainHttpTunneling = true
+    )
+)
 class HoverflyApplicationTests {
 
     @Container
