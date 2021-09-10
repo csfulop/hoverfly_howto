@@ -1,0 +1,47 @@
+{
+  "data" : {
+    "pairs" : [ {
+      "request" : {
+        "path" : [ {
+          "matcher" : "exact",
+          "value" : "/v1/users"
+        } ],
+        "method" : [ {
+          "matcher" : "exact",
+          "value" : "GET"
+        } ],
+        "destination" : [ {
+          "matcher" : "exact",
+          "value" : "localhost:3333"
+        } ],
+        "scheme" : [ {
+          "matcher" : "exact",
+          "value" : "http"
+        } ],
+        "body" : [ {
+          "matcher" : "exact",
+          "value" : ""
+        } ]
+      },
+      "response" : {
+        "status" : 200,
+        "body" : "[{\"id\":1,\"name\":\"John\"},{\"id\":2,\"name\":\"Marry\"},{\"id\":3,\"name\":\"Roger\"}]",
+        "encodedBody" : false,
+        "templated" : false,
+        "headers" : {
+          "Content-Type" : [ "application/json; charset=utf-8" ],
+          "Hoverfly" : [ "Was-Here" ],
+          "Vary" : [ "Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers" ]
+        }
+      }
+    } ],
+    "globalActions" : {
+      "delays" : [ ]
+    }
+  },
+  "meta" : {
+    "schemaVersion" : "v5.1",
+    "hoverflyVersion" : "v1.3.3",
+    "timeExported" : "2021-09-10T13:49:43+02:00"
+  }
+}
