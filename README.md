@@ -6,9 +6,11 @@ Based on: https://medium.com/@dotronglong/set-up-fake-api-in-minutes-with-docker
 
 Run this docker to create a fake JSON REST API:
 ```
-docker run --rm -p 3030:3030 -v $PWD/src/test/resources/mocks:/app/mocks dotronglong/faker:stable
+docker run --rm -p 3030:3030 -v $PWD/src/componentTest/resources/mocks:/app/mocks dotronglong/faker:stable
 curl -s http://localhost:3030/v1/users | jq .
 ```
+
+Tests use org.testcontainers to automatically start the faker container.
 
 Our app will query this fake JSON REST API.
 

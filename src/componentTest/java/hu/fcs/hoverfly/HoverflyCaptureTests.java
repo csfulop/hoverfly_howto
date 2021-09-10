@@ -28,15 +28,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @HoverflyCapture(
     config = @HoverflyConfig(
         plainHttpTunneling = true
-    )
+    ),
+    // path needs to be overridden because by default it saves the captures into the test folder
+    path = "src/componentTest/resources/hoverfly"
 )
-class HoverflyApplicationTests {
+class HoverflyCaptureTests {
 
     @Container
     private static final GenericContainer<?> container =
         new GenericContainer<>("dotronglong/faker:stable")
             .withExposedPorts(3030)
-            .withFileSystemBind("src/test/resources/mocks", "/app/mocks");
+            .withFileSystemBind("src/componentTest/resources/mocks", "/app/mocks");
 
     @DynamicPropertySource
     private static void registerApiPort(DynamicPropertyRegistry registry) {
